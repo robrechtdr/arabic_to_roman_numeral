@@ -1,5 +1,35 @@
 def _simple_arabic_to_roman(simple_arabic):
-    pass
+    base_conv_table = [("1000","M"), ("500","D"), ("100","C"),
+                       ("50", "L"), ("10", "X"), ("5", "V"), ("1", "I"),
+                       ("0", "")]
+
+    simple_ar = int(simple_arabic)
+    for i, base in enumerate(base_conv_table):
+        current_ar = int(base[0])#  base_conv_table[i][0]
+        current_rom = base[1]# base_conv_table[i][0]
+        next_ar = int(base_conv_table[i + 1][0])
+        next_rom = base_conv_table[i + 1][1]
+
+        if simple_ar > current_ar:
+            residual_ar = simple_ar - current_ar
+            return current_rom + _simple_arabic_to_roman(residual_ar)
+            #print current_ar
+            #print "attention!"
+        elif current_ar > simple_ar > next_ar:
+            #residual_ar = simple_ar - current_ar
+            #return current_rom + _simple_arabic_to_roman(residual_ar)
+            #simple ar 900
+            #current ar 1000
+            #next ar 500
+            residual_ar = simple_ar - next_ar
+            return next_rom + _simple_arabic_to_roman(residual_ar)
+            #multiple = simple_ar / next_ar
+            #return multiple * next_rom
+
+        elif simple_ar == current_ar:
+            return current_rom
+        elif simple_ar == next_ar:
+            return next_rom
 
 
 def _get_decimal_split(arabic):

@@ -15,7 +15,11 @@ class TestCase(unittest.TestCase):
         pass
 
     def test_simple_arabic_to_roman(self):
+        assert _simple_arabic_to_roman("400") == "CCCC"
         assert _simple_arabic_to_roman("900") == "DCCCC"
+        assert _simple_arabic_to_roman("0") == ""
+        assert _simple_arabic_to_roman("1") == "I"
+        assert _simple_arabic_to_roman("2900") == "MMDCCCC"
 
     def test_get_decimal_split(self):
         assert _get_decimal_split("1904") == ["1000", "900", "0", "4"]
