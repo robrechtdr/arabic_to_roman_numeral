@@ -1,3 +1,6 @@
+from collections import deque
+
+
 def _simple_arabic_to_roman(simple_arabic):
     base_conv_table = [("1000","M"), ("500","D"), ("100","C"),
                        ("50", "L"), ("10", "X"), ("5", "V"), ("1", "I"),
@@ -11,11 +14,11 @@ def _simple_arabic_to_roman(simple_arabic):
         next_rom = base_conv_table[i + 1][1]
 
         if simple_ar > current_ar:
-            residual_ar = simple_ar - current_ar
-            return current_rom + _simple_arabic_to_roman(residual_ar)
+            residual_current_ar = simple_ar - current_ar
+            return current_rom + _simple_arabic_to_roman(residual_current_ar)
         elif current_ar > simple_ar > next_ar:
-            residual_ar = simple_ar - next_ar
-            return next_rom + _simple_arabic_to_roman(residual_ar)
+            residual_next_ar = simple_ar - next_ar
+            return next_rom + _simple_arabic_to_roman(residual_next_ar)
         elif simple_ar == current_ar:
             return current_rom
         elif simple_ar == next_ar:
@@ -23,14 +26,14 @@ def _simple_arabic_to_roman(simple_arabic):
 
 
 def _get_decimal_split(arabic):
-    pass
+    split = deque([])
+    for i, digit in enumerate(reversed(arabic)):
+        positional_number = int(digit) * 10**i
+        split.appendleft(str(positional_number))
+    return list(split)
 
 
 def _arabic_to_additive_roman_numeral(arabic):
-    # For e.g. "1904"
-    # Split into pieces per decimal place, e.g. ["1000", "900", "0", "4"].
-    # Then per number in this list, replace by the largest roman number
-    # if equal to it, if not ...
     dsplit = _get_decimal_split(arabic)
     rsplit = [_simple_arabic_to_roman(num) for num in dsplit]
     return "".join(rsplit)
