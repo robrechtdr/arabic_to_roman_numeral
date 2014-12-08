@@ -32,6 +32,9 @@ class TestCase(unittest.TestCase):
 
     def test_arabic_to_roman_numeral(self):
         assert arabic_to_roman_numeral("1904") == "MCMIV"
+        assert arabic_to_roman_numeral("1954") == "MCMLIV"
+        assert arabic_to_roman_numeral("1990") == "MCMXC"
+        assert arabic_to_roman_numeral("2014") == "MMXIV"
 
 
 if __name__ == "__main__":
