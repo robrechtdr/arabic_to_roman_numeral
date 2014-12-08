@@ -40,7 +40,12 @@ def _arabic_to_additive_roman_numeral(arabic):
 
 
 def _apply_subtractive_rule(purely_additive_roman):
-    pass
+    par = purely_additive_roman.replace("DCCCC", "CM")
+    par = par.replace("CCCC", "CD")
+    par = par.replace("LXXXX", "XC")
+    par = par.replace("XXXX", "XL")
+    par = par.replace("IIII", "IV")
+    return par
 
 
 def arabic_to_roman_numeral(arabic):
@@ -60,5 +65,4 @@ def arabic_to_roman_numeral(arabic):
     """
     purely_additive_roman = _arabic_to_additive_roman_numeral(arabic)
     return _apply_subtractive_rule(purely_additive_roman)
-
 
