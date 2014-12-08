@@ -1,3 +1,11 @@
+def _arabic_to_additive_roman_numeral(arabic):
+    pass
+
+
+def _apply_subtractive_rule(purely_additive_roman):
+    pass
+
+
 def arabic_to_roman_numeral(arabic):
     """Convert an arabic numeral to a roman numeral.
 
@@ -13,5 +21,6 @@ def arabic_to_roman_numeral(arabic):
     Returns:
         string.
     """
-    pass
+    purely_additive_roman = _arabic_to_additive_roman_numeral(arabic)
+    return _apply_subtractive_rule(purely_additive_roman)
 
