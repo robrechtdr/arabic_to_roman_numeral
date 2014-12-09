@@ -14,11 +14,8 @@ def _simple_arabic_to_roman(simple_arabic):
         next_rom = base_conv_table[i + 1][1]
 
         if simple_ar > current_ar:
-            residual_current_ar = simple_ar - current_ar
-            return current_rom + _simple_arabic_to_roman(residual_current_ar)
-        elif current_ar > simple_ar > next_ar:
-            residual_next_ar = simple_ar - next_ar
-            return next_rom + _simple_arabic_to_roman(residual_next_ar)
+            residual = simple_ar - current_ar
+            return current_rom + _simple_arabic_to_roman(residual)
         elif simple_ar == current_ar:
             return current_rom
         elif simple_ar == next_ar:
@@ -65,4 +62,3 @@ def arabic_to_roman_numeral(arabic):
     """
     purely_additive_roman = _arabic_to_additive_roman_numeral(arabic)
     return _apply_subtractive_rule(purely_additive_roman)
-
