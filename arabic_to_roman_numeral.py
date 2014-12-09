@@ -2,9 +2,8 @@ from collections import deque
 
 
 def _simple_arabic_to_roman(simple_arabic):
-    base_conv_table = [("1000","M"), ("500","D"), ("100","C"),
-                       ("50", "L"), ("10", "X"), ("5", "V"), ("1", "I"),
-                       ("0", "")]
+    base_conv_table = [("1000","M"), ("500","D"), ("100","C"),("50", "L"),
+                       ("10", "X"), ("5", "V"), ("1", "I"),("0", "")]
 
     simple_ar = int(simple_arabic)
     for i, base in enumerate(base_conv_table):
@@ -48,8 +47,8 @@ def _apply_subtractive_rule(purely_additive_roman):
 def arabic_to_roman_numeral(arabic):
     """Convert an arabic numeral to a roman numeral.
 
-    This roman numral is of the standard form utilizing substractive notation
-    as defined in the following wiki article as to increase compactness:
+    The roman numeral produced is of the standard form utilizing subtractive
+    notation as defined in the following wiki article as to increase compactness:
 
         http://en.wikipedia.org/wiki/Roman_numerals#Reading_Roman_numerals.
 
